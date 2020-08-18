@@ -239,6 +239,18 @@ Frecuencia Espacial
 \end_layout
 
 \begin_layout Standard
+resuelto en mainEj4.py
+\end_layout
+
+\begin_layout Standard
+Se requiere opencv-python 4.4.0.42 y numpy 1.19.1
+\end_layout
+
+\begin_layout Section
+Decimación
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 

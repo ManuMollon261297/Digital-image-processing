@@ -235,7 +235,15 @@ Parte experimental.
 \end_layout
 
 \begin_layout Section
+Frecuencia Espacial
+\end_layout
 
+\begin_layout Standard
+resuelto en mainEj4.py
+\end_layout
+
+\begin_layout Standard
+Se requiere opencv-python 4.4.0.42 y numpy 1.19.1
 \end_layout
 
 \end_body

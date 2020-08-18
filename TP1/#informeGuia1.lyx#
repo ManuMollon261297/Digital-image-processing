@@ -215,7 +215,39 @@ Sea
 \end_layout
 
 \begin_layout Standard
-Entonces para e
+Entonces para estos 
+\begin_inset Formula $286mm$
+\end_inset
+
+ la cámara dispone de 
+\begin_inset Formula $1000pixeles$
+\end_inset
+
+, por lo tanto un pixel representa aproximadamente 
+\begin_inset Formula $5.4mm$
+\end_inset
+
+ de la imagen captada por la lente de la cámara.
+\end_layout
+
+\begin_layout Section
+Parte experimental.
+\end_layout
+
+\begin_layout Section
+Frecuencia Espacial
+\end_layout
+
+\begin_layout Standard
+resuelto en mainEj4.py
+\end_layout
+
+\begin_layout Standard
+Se requiere opencv-python 4.4.0.42 y numpy 1.19.1
+\end_layout
+
+\begin_layout Section
+Decimación
 \end_layout
 
 \end_body

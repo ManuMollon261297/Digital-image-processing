@@ -1,0 +1,254 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Part*
+Guía 1 - Procesamiento de Imágenes
+\end_layout
+
+\begin_layout Section
+Modelado de Ojo
+\end_layout
+
+\begin_layout Standard
+Suponiendo al ojo como un sistema lente-sensor, con el sensor conformado
+ por una densidad de conos de 150000 conos/mm2 y un área de 
+\begin_inset Formula $1.5mm\;x\;1.5mm=2.25mm^{2}\Rightarrow337500$
+\end_inset
+
+ conos en total.
+ Por lo tanto, se pueden aproximar unos 
+\begin_inset Formula $\sqrt{337500}\simeq580$
+\end_inset
+
+ conos tanto de largo como de ancho.
+ Entonces por cada milímetro (lineal) se tienen 
+\begin_inset Formula $\frac{580}{1.5}=387\frac{conos}{mm}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Para que un pixel de la imagen sea perceptible por el ojo, debe captarse
+ un tamaño mayor o igual a el de un cono.
+ Por lo tanto debe captarse un tamaño lineal 
+\begin_inset Formula $\geq\frac{1}{387}mm\simeq2.5\mu m$
+\end_inset
+
+.
+ Teniendo en cuenta la lente, cuya distancia al sensor es de 
+\begin_inset Formula $15mm0.015m$
+\end_inset
+
+ aproximadamente, y que la distancia al pixel es de 
+\begin_inset Formula $30cm=0.3m$
+\end_inset
+
+, entonces el mínimo tamaño lineal 
+\begin_inset Formula $"X"$
+\end_inset
+
+ de un pixel se calcula de la siguiente manera:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{X}{0.3}=\frac{2.5x10^{-6}}{0.015}\Rightarrow X=50\mu m
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hoy en día en los pixeles de celulares rondan en promedio aproximadamente
+ los 400ppp (píxel por pulgada), entonces el tamaño lineal del pixel suele
+ ser de 
+\begin_inset Formula $\frac{0.0254m}{400}=63.5\mu m$
+\end_inset
+
+.
+ Por lo tanto, se puede concluir que el ojo puede captar este tipo de imagenes
+ de celular.
+ 
+\end_layout
+
+\begin_layout Standard
+También se puede destacar que al ir aumentando la resolución, llega un punto
+ en que no tendría sentido una mayor resolución ya que significaría un tamaño
+ menor de pixel el cual no sería detectable por el ojo humano (o al menos
+ por el modelo planteado).
+ 
+\end_layout
+
+\begin_layout Section
+Cálculos de Resoluciones
+\end_layout
+
+\begin_layout Standard
+Supongase que se fotografía una imagen con una camara que tiene una distancia
+ focal de 
+\begin_inset Formula $35mm$
+\end_inset
+
+, con un CCD de 
+\begin_inset Formula $10mm$
+\end_inset
+
+ x 
+\begin_inset Formula $10mm$
+\end_inset
+
+ y 
+\begin_inset Formula $1Mpixel$
+\end_inset
+
+ de resolución.
+ Se pretende entonces calcular cuantos milímetros representa un pixel en
+ la imagen fotografiada.
+ Se calcula de la siguiente manera:
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $"X"$
+\end_inset
+
+ el tamaño lineal (ya sea vertical u horizontal) de la imagen que capta
+ la lente de la cámara, sea la distancia de la imagen a la cámara igual
+ a 
+\begin_inset Formula $1m$
+\end_inset
+
+ y dado que en el CCD existen 
+\begin_inset Formula $\frac{1000pixeles}{10mm}$
+\end_inset
+
+ lineales:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{X}{1}=\frac{0.01}{0.0035}\Rightarrow X\simeq286mm
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces para estos 
+\begin_inset Formula $286mm$
+\end_inset
+
+ la cámara dispone de 
+\begin_inset Formula $1000pixeles$
+\end_inset
+
+, por lo tanto un pixel representa aproximadamente 
+\begin_inset Formula $5.4mm$
+\end_inset
+
+ de la imagen captada por la lente de la cámara.
+\end_layout
+
+\begin_layout Section
+Parte experimental.
+\end_layout
+
+\begin_layout Section
+Frecuencia Espacial
+\end_layout
+
+\begin_layout Standard
+resuelto en mainEj4.py
+\end_layout
+
+\begin_layout Standard
+Se requiere opencv-python 4.4.0.42 y numpy 1.19.1
+\end_layout
+
+\begin_layout Section
+Decimación
+\end_layout
+
+\end_body
+\end_document

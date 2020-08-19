@@ -25,13 +25,16 @@ def run_ej4():
     cv.namedWindow(winname='TrackBars', flags=cv.WINDOW_AUTOSIZE)
     cv.createTrackbar('Luminancia', 'TrackBars', 0, 255, _dummy)
 
-    while True:
+    windowsAreClosed = False
+    while not (windowsAreClosed):
         pos_actual = cv.getTrackbarPos(trackbarname='Luminancia', winname='TrackBars')
         cv.rectangle(img=mat1, pt1=(int(29), int(29)), pt2=(int(59), int(59)), color=pos_actual, thickness=cv.FILLED)
         cv.rectangle(img=mat2, pt1=(int(29), int(29)), pt2=(int(59), int(59)), color=pos_actual, thickness=cv.FILLED)
         new_mat = np.hstack((mat1, mat2))
         cv.imshow(winname='Imagen1', mat=new_mat)
         cv.waitKey(int(1000 / 60))
+        windowsAreClosed = not (bool(cv.getWindowProperty('Imagen1', cv.WND_PROP_VISIBLE)) or bool(
+            cv.getWindowProperty('TrackBars', cv.WND_PROP_VISIBLE)))
 
 
 def _another_way():

@@ -1,5 +1,6 @@
 import cv2 as cv
 import numpy as np
+import bicubic
 
 
 def run_ej5_a(img, show=True, same_size=False):
@@ -54,41 +55,47 @@ def _interpolate(x, x1, x2, x1_cte, x2_cte):
     return (abs(x2 - x) / abs(x2 - x1)) * x1_cte + (abs(x - x1) / abs(x2 - x1)) * x2_cte
 
 
-def run_ej5_d(img, show=False, scale=4):
+def run_ej5_d(img, show=False, method = 'bilineal',scale=4):
+    if method == 'bilineal':
+        new_img = np.zeros(tuple(i*scale for i in img.shape), dtype=np.uint8)
+        new_img[::scale, ::scale] = img[::]
+        new_x_treme, new_y_treme = new_img.shape
+        x_treme, y_treme = img.shape
 
-    new_img = np.zeros(tuple(i*scale for i in img.shape), dtype=np.uint8)
-    new_img[::scale, ::scale] = img[::]
-    new_x_treme, new_y_treme = new_img.shape
-    x_treme, y_treme = img.shape
+        for x in range(new_x_treme):
+            for y in range(new_y_treme):
+                y1 = y // scale
+                y2 = (y + scale) // scale
+                x1 = x // scale
+                x2 = (x + scale) // scale
 
-    for x in range(new_x_treme):
-        for y in range(new_y_treme):
-            y1 = y // scale
-            y2 = (y + scale) // scale
-            x1 = x // scale
-            x2 = (x + scale) // scale
+                if (x2 < 0 or x2 >= x_treme) and (y2 < 0 or y2 >= y_treme):
+                    new_img[x, y] = _interpolate(y, y1*scale, y2*scale,
+                                                 _interpolate(x, x1*scale, x2*scale, img[x1, y1], 0),
+                                                 _interpolate(x, x1*scale, x2*scale, 0, 0)
+                                                 )
+                elif x2 < 0 or x2 >= x_treme:
+                    new_img[x, y] = _interpolate(y, y1*scale, y2*scale,
+                                                 _interpolate(x, x1*scale, x2*scale, img[x1, y1], 0),
+                                                 _interpolate(x, x1*scale, x2*scale, img[x1, y2], 0)
+                                                 )
 
-            if (x2 < 0 or x2 >= x_treme) and (y2 < 0 or y2 >= y_treme):
-                new_img[x, y] = _interpolate(y, y1*scale, y2*scale,
-                                             _interpolate(x, x1*scale, x2*scale, img[x1, y1], 0),
-                                             _interpolate(x, x1*scale, x2*scale, 0, 0)
-                                             )
-            elif x2 < 0 or x2 >= x_treme:
-                new_img[x, y] = _interpolate(y, y1*scale, y2*scale,
-                                             _interpolate(x, x1*scale, x2*scale, img[x1, y1], 0),
-                                             _interpolate(x, x1*scale, x2*scale, img[x1, y2], 0)
-                                             )
-
-            elif y2 < 0 or y2 >= y_treme:
-                new_img[x, y] = _interpolate(y, y1*scale, y2*scale,
-                                             _interpolate(x, x1*scale, x2*scale, img[x1, y1], img[x2, y1]),
-                                             _interpolate(x, x1*scale, x2*scale, 0, 0)
-                                             )
-            else:
-                new_img[x, y] = _interpolate(y, y1*scale, y2*scale,
-                                             _interpolate(x, x1*scale, x2*scale, img[x1, y1], img[x2, y1]),
-                                             _interpolate(x, x1*scale, x2*scale, img[x1, y2], img[x2, y2])
-                                             )
+                elif y2 < 0 or y2 >= y_treme:
+                    new_img[x, y] = _interpolate(y, y1*scale, y2*scale,
+                                                 _interpolate(x, x1*scale, x2*scale, img[x1, y1], img[x2, y1]),
+                                                 _interpolate(x, x1*scale, x2*scale, 0, 0)
+                                                 )
+                else:
+                    new_img[x, y] = _interpolate(y, y1*scale, y2*scale,
+                                                 _interpolate(x, x1*scale, x2*scale, img[x1, y1], img[x2, y1]),
+                                                 _interpolate(x, x1*scale, x2*scale, img[x1, y2], img[x2, y2])
+                                                 )
+    elif method == 'bicubic':
+        new_img = bicubic.biDimInterpol(img, reScaleFactor = scale)
+        # cv.imshow(winname='Bicubic Interpolation Image', mat=interpolArray.astype(np.uint8))
+        # cv.waitKey(0)
+    else:
+        print('Method Non Existing')
 
     if show:
         cv.imshow(winname='Resized', mat=new_img)

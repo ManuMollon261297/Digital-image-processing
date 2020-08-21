@@ -138,15 +138,21 @@ Para que un pixel de la imagen sea perceptible por el ojo, debe captarse
 
 \begin_layout Standard
 Hoy en día en los pixeles de celulares rondan en promedio aproximadamente
- los 400ppp (píxel por pulgada), entonces el tamaño lineal del pixel suele
- ser de 
-\begin_inset Formula $\frac{0.0254m}{400}=63.5\mu m$
+ 
+\begin_inset Formula $1um$
+\end_inset
+
+ lineal.
+ Esto tiene sentido, ya que de esta manera el ojo humano no puede distinguir
+ cada pixel, lo cual da la sensación de que se tiene en frente un 
+\begin_inset Quotes eld
+\end_inset
+
+continuo
+\begin_inset Quotes erd
 \end_inset
 
 .
- Por lo tanto, se puede concluir que el ojo puede captar este tipo de imagenes
- de celular.
- 
 \end_layout
 
 \begin_layout Standard
@@ -231,7 +237,89 @@ Entonces para estos
 \end_layout
 
 \begin_layout Section
-Parte experimental.
+Medición de Resolución
+\end_layout
+
+\begin_layout Standard
+Se utilizó la cámara de un celular 
+\begin_inset Quotes eld
+\end_inset
+
+Iphone 7 plus
+\begin_inset Quotes erd
+\end_inset
+
+ (12Mpx de resolución) para fotografiar la imagen 
+\begin_inset Quotes eld
+\end_inset
+
+iso-rag.jpg
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+A continuación se muestra la imagen 
+\begin_inset Quotes eld
+\end_inset
+
+iso-rag
+\begin_inset Quotes erd
+\end_inset
+
+ (izquierda) y la imagen tomada por la cámara (derecha):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename iso-rag.jpg
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fotoIPHONE.jpeg
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Imagen original vs capturada por cámara
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -239,15 +327,468 @@ Frecuencia Espacial
 \end_layout
 
 \begin_layout Standard
-resuelto en mainEj4.py
+resuelto en main.py (run_ej4())
 \end_layout
 
 \begin_layout Standard
-Se requiere opencv-python 4.4.0.42 y numpy 1.19.1
+Se requiere opencv-python 4.4.0.42 y numpy 1.19.1.
+\end_layout
+
+\begin_layout Standard
+Se puedo notar que el cuadrado central que tiene un fondo más oscuro, 
+\begin_inset Quotes eld
+\end_inset
+
+parece
+\begin_inset Quotes erd
+\end_inset
+
+ a la vista más brillante o claro, con respecto al pixel central, que tiene
+ la misma luminancia pero con un fondo más claro que el primero.
+\end_layout
+
+\begin_layout Standard
+Luego, se varió la luminancia de ambos pixeles centrales para ver el efecto
+ a distintos valores de luminancia.
+ En los valores extremos (0 - negro y 255 -blanco), se vió disminuido el
+ efecto visual.
 \end_layout
 
 \begin_layout Section
+Decimación e Interpolación
+\end_layout
+
+\begin_layout Subsection
 Decimación
+\end_layout
+
+\begin_layout Standard
+Se procedió a realizar varias decimaciones de la imagen 
+\begin_inset Quotes eld
+\end_inset
+
+mono.bmp
+\begin_inset Quotes erd
+\end_inset
+
+, que se pueden realizar en main.py (run_ej5a(), run_ej5b() y run_ej5c()),
+ en las cuales se tomaron porciones de 4x4 pixeles y se obtuvieron los siguiente
+s resultados:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename mono.bmp
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Imagen 
+\begin_inset Quotes eld
+\end_inset
+
+mono.bmp
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename decimacionA.PNG
+	scale 40
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename decimacionB.PNG
+	scale 90
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename decimacionC.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Decimaciones - Resultados
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la primer imagen (correspondiente a la primer decimación), se tomó el
+ pixel en la posición (1, 1).
+ En la segunda, se tomó el pixel en la posición (0,0).
+ En la tercera y última, se realizó un promedio entre los 16 pixeles.
+\end_layout
+
+\begin_layout Standard
+En la primer decimación, se puede notar una imagen más 
+\begin_inset Quotes eld
+\end_inset
+
+pixelada
+\begin_inset Quotes erd
+\end_inset
+
+ lo cual tiene sentido ya que se descartan detalles al decimar.
+\end_layout
+
+\begin_layout Standard
+En la segunda decimación, se puede notar una imagen que no tiene relación
+ con la imagen original, aunque enrealidad si se observa con detenimiento
+ la imagen original, esta última presenta un punteado equiespaciado, el
+ cual efectivamente se corresponde con la imagen que se obtuvo al decimar.
+\end_layout
+
+\begin_layout Standard
+En la tercer decimación, se logra eliminar el punteado y suavizar algunos
+ detalles de la imagen original debido a la promediación realizada.
+\end_layout
+
+\begin_layout Subsection
+Interpolación
+\end_layout
+
+\begin_layout Standard
+Luego de haber realizado las decimaciones, se toman cada una de las imagenes
+ y se le aplica una interpolación, tanto bilineal como cúbica.
+ Los resultados son los siguientes (para cada resultado de muestra también
+ el espectro de la imagen obtenida):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagenes5-2/resizedAbilineal.PNG
+	scale 40
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename imagenes5-2/resizedAbilinealSPEC.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interpolación A - bilineal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagenes5-2/resizedBbilineal.PNG
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename imagenes5-2/resizedBbilinealSPEC.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interpolación B - bilineal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagenes5-2/resizedCbilineal.PNG
+	scale 30
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename imagenes5-2/resizedCbilinealSPEC.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interpolación C - bilineal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagenes5-2/resizedAcubic.PNG
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename imagenes5-2/resizedAcubicSPEC.PNG
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interpolación A - bicúbica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagenes5-2/resizedBcubic.PNG
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename imagenes5-2/resizedBcubicSPEC.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interpolación B - bicúbica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagenes5-2/resizedCcubic.PNG
+	scale 30
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename imagenes5-2/resizedCcubicSPEC.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interpolación C - bicúbica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se puede concluir que se regeneran las imagenes correctamente, en el sentido
+ que se sigue identificando tanto el mono como la persona (Dani) luego de
+ interpolar.
+ En cuanto al tipo de interpolación utilizado, se puede notar que con la
+ interpolación bicubica se obtienen rasgos mas 
+\begin_inset Quotes eld
+\end_inset
+
+suaves
+\begin_inset Quotes erd
+\end_inset
+
+, que se notan tanto en la imágen como en las cambios de la respuesta en
+ frecuencia, la cual toma valores elevados en el centro de la imagen (ya
+ que en el centro de la imagen de define el rostro, con componentes de altas
+ frecuencias, y que toma valores cercanos a cero en los bordes, debido a
+ que casi no hay variación espacial.
 \end_layout
 
 \end_body

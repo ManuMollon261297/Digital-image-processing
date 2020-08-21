@@ -102,7 +102,7 @@ def run_ej5_d(img, show=False, method = 'bilineal',scale=4, spectrum = True):
         f = np.fft.fft2(new_img)
         Mf = np.abs(f)
         magnitude_spectrum = np.abs(np.fft.fftshift(Mf))
-        log_magnitude_spectrum = 20*np.log(magnitude_spectrum)
+        log_magnitude_spectrum = np.log(1+magnitude_spectrum)
         plt.imshow(log_magnitude_spectrum, cmap = 'gray')
         plt.title('Log Magnitude Spectrum')
         #WITH NUMPY AND OPENCV

@@ -2,26 +2,47 @@ import numpy as np
 import cv2 as cv
 
 def biDimInterpol(imageArray, reScaleFactor = 4):
-    #cv.imshow(winname='Original Imagen', mat=imageArray.astype(np.uint8))
-    #cv.waitKey(0)
     imageArray = imageArray.astype(np.float64)
+    imageArray = np.pad(imageArray, 1, 'edge')
     width = imageArray.shape[0]
     height = imageArray.shape[1]
-    imageArray = np.pad(imageArray, 1, 'edge')
-    increment = 1/(2*reScaleFactor-1)
-    newImageArray = np.zeros((width*reScaleFactor,height*reScaleFactor))
-    for i in range(int(width/2)):
-      for j in range(int(height/2)):
-        smallArray = imageArray[i*2:i*2+4,j*2:j*2+4]  
+    nX = width-2
+    nY = height-2
+    newImageArray = np.zeros((nX*reScaleFactor, nY*reScaleFactor))
+    nXp = nX*reScaleFactor
+    nYp = nY*reScaleFactor
+    eX = nX-1
+    eY = nY-1
+    iX = (nXp-nX)//eX
+    iY = (nYp-nY)//eY
+    xX = (nXp-nX)%eX
+    xY = (nYp-nY)%eY
+    extraX=1
+    extraY=1
+    for i in range(width-3):
+      for j in range(height-3):
+        smallArray = imageArray[i:i+4,j:j+4]
         arrayF = getArrayF(smallArray)
         coefs = getCoefs(arrayF)
-        intervals = 2*reScaleFactor
-        for k in range(intervals):
-          for l in range(intervals):   
-            x = k*increment
-            y = l*increment
-            interpolVal = interpol(coefs,x,y)
-            newImageArray[i*2*reScaleFactor+k][j*2*reScaleFactor+l] = interpolVal
+        if(xX == 0):
+          extraX = 0
+        if(xY == 0):
+          extraY = 0
+        for k in range(2+iX+extraY):
+          for l in range(2+iY+extraX):
+            x = k/(1+iX+extraX)
+            y = l/(1+iY+extraX)
+            if interpol(coefs,x,y) > 255:
+              interpolVal = 255
+            else:
+              interpolVal = interpol(coefs,x,y)
+            newImageArray[i*reScaleFactor+k+(nYp-nY)%eY-xY][j*reScaleFactor+l+(nXp-nX)%eX-xX] = interpolVal
+        if xX>0:
+          xX = xX-1
+      if xY>0:
+        xY = xY-1
+      extraX=1
+      xX = (nXp-nX)%eX
     return newImageArray.astype(np.uint8)
 
 def getArrayF(smallArray):
@@ -55,24 +76,3 @@ def interpol(coefsArray,x,y):
     xArray = np.array([1,x,x**2,x**3])
     yArray = np.array([1,y,y**2,y**3])
     return np.dot(np.dot(xArray, coefsArray), yArray)
-
-# img = cv.imread(filename='../mono.bmp', flags=cv.IMREAD_GRAYSCALE)
-# cv.imshow(winname='Original Imagen', mat=img.astype(np.uint8))
-# cv.waitKey(0)
-# N = 15
-# auxList = list(range(225))
-# #array = np.array(auxList)
-# #array = np.reshape(array,(N,N))
-# #array = np.array([[1,2,3,4],
-# #                  [2,4,6,8],
-# #                  [3,6,9,12],
-# #                  [4,8,12,16]])
-# print(img)
-# interpolArray = bicubic(img, reScaleFactor = 2)
-# print(interpolArray.astype(np.uint8))
-# cv.imshow(winname='Original Imagen', mat=img.astype(np.uint8))
-# cv.waitKey(0)
-# cv.imshow(winname='Bicubic Interpolation Image', mat=interpolArray.astype(np.uint8))
-# cv.waitKey(0)
-
-    

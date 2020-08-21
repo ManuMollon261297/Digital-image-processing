@@ -92,8 +92,6 @@ def run_ej5_d(img, show=False, method = 'bilineal',scale=4):
                                                  )
     elif method == 'bicubic':
         new_img = bicubic.biDimInterpol(img, reScaleFactor = scale)
-        # cv.imshow(winname='Bicubic Interpolation Image', mat=interpolArray.astype(np.uint8))
-        # cv.waitKey(0)
     else:
         print('Method Non Existing')
 

@@ -99,20 +99,19 @@ def run_ej5_d(img, show=False, method = 'bilineal',scale=4, spectrum = True):
     if spectrum:
 
         #WITH NUMPY AND MATPLOTLIB
-        """f = np.fft.fft2(new_img)
+        f = np.fft.fft2(new_img)
         Mf = np.abs(f)
         magnitude_spectrum = np.abs(np.fft.fftshift(Mf))
         log_magnitude_spectrum = 20*np.log(magnitude_spectrum)
-        plt.imshow(magnitude_spectrum, cmap = 'gray')
+        plt.imshow(log_magnitude_spectrum, cmap = 'gray')
         plt.title('Log Magnitude Spectrum')
-        plt.show()"""
         #WITH NUMPY AND OPENCV
-        dft = cv.dft(np.float32(img),flags = cv.DFT_COMPLEX_OUTPUT)
+        """dft = cv.dft(np.float32(img),flags = cv.DFT_COMPLEX_OUTPUT)
         dft_shift = np.fft.fftshift(dft)
 
         magnitude_spectrum = 20*np.log(cv.magnitude(dft_shift[:,:,0],dft_shift[:,:,1]))
         plt.imshow(magnitude_spectrum, cmap = 'gray')
-        plt.title('Log Magnitude Spectrum')
+        plt.title('Log Magnitude Spectrum')"""
         
         #cv.imshow(winname='Log Magnitud Spectrum', mat = magnitude_spectrum)
 

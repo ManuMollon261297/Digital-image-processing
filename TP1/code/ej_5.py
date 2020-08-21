@@ -1,6 +1,7 @@
 import cv2 as cv
 import numpy as np
 import bicubic
+import matplotlib.pyplot as plt
 
 
 def run_ej5_a(img, show=True, same_size=False):
@@ -55,7 +56,7 @@ def _interpolate(x, x1, x2, x1_cte, x2_cte):
     return (abs(x2 - x) / abs(x2 - x1)) * x1_cte + (abs(x - x1) / abs(x2 - x1)) * x2_cte
 
 
-def run_ej5_d(img, show=False, method = 'bilineal',scale=4):
+def run_ej5_d(img, show=False, method = 'bilineal',scale=4, spectrum = True):
     if method == 'bilineal':
         new_img = np.zeros(tuple(i*scale for i in img.shape), dtype=np.uint8)
         new_img[::scale, ::scale] = img[::]
@@ -95,10 +96,31 @@ def run_ej5_d(img, show=False, method = 'bilineal',scale=4):
     else:
         print('Method Non Existing')
 
+    if spectrum:
+
+        #WITH NUMPY AND MATPLOTLIB
+        """f = np.fft.fft2(new_img)
+        Mf = np.abs(f)
+        magnitude_spectrum = np.abs(np.fft.fftshift(Mf))
+        log_magnitude_spectrum = 20*np.log(magnitude_spectrum)
+        plt.imshow(magnitude_spectrum, cmap = 'gray')
+        plt.title('Log Magnitude Spectrum')
+        plt.show()"""
+        #WITH NUMPY AND OPENCV
+        dft = cv.dft(np.float32(img),flags = cv.DFT_COMPLEX_OUTPUT)
+        dft_shift = np.fft.fftshift(dft)
+
+        magnitude_spectrum = 20*np.log(cv.magnitude(dft_shift[:,:,0],dft_shift[:,:,1]))
+        plt.imshow(magnitude_spectrum, cmap = 'gray')
+        plt.title('Log Magnitude Spectrum')
+        
+        #cv.imshow(winname='Log Magnitud Spectrum', mat = magnitude_spectrum)
+
     if show:
         cv.imshow(winname='Resized', mat=new_img)
+        plt.show()
         cv.waitKey(0)
-
+    
     return new_img
 
 

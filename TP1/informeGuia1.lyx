@@ -75,6 +75,333 @@
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{titlepage}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+HRule}{
+\backslash
+rule{
+\backslash
+linewidth}{0.5mm}}       
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+center        
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+--------- 
+\end_layout
+
+\begin_layout Plain Layout
+
+%	HEADING SECTIONS 
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+---------      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{
+\backslash
+LARGE Instituto Tecnológico de Buenos Aires}
+\backslash
+
+\backslash
+[2cm]  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{
+\backslash
+Large 22.48 - Procesamiento de imágenes}
+\backslash
+
+\backslash
+[1.5cm]  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{
+\backslash
+large Trabajo Práctico N°1}
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+--------- 
+\end_layout
+
+\begin_layout Plain Layout
+
+%	TITLE SECTION 
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+---------      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+HRule 
+\backslash
+
+\backslash
+[0.5cm] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{ 
+\backslash
+huge Guía 1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.4cm]  
+\backslash
+HRule 
+\backslash
+
+\backslash
+[2cm]       
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+--------- 
+\end_layout
+
+\begin_layout Plain Layout
+
+%	AUTHOR SECTION 
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+---------      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{0.4
+\backslash
+textwidth} 
+\backslash
+begin{flushleft} 
+\backslash
+large 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{Grupo 1:}
+\backslash
+
+\backslash
+		 [.3cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+Matías Agustín 
+\backslash
+textsc{Larroque}
+\backslash
+
+\backslash
+ Leg.
+ 56597 
+\backslash
+
+\backslash
+  [.3cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+Tomás Agustín 
+\backslash
+textsc{González Orlando}
+\backslash
+
+\backslash
+ Leg.
+ 57090 
+\backslash
+
+\backslash
+  [.3cm] 
+\end_layout
+
+\begin_layout Plain Layout
+
+Manuel Fernando 
+\backslash
+textsc{Mollón}
+\backslash
+
+\backslash
+ Leg.
+ 58023 
+\backslash
+
+\backslash
+  [.3cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{flushleft} 
+\backslash
+end{minipage} ~ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{0.4
+\backslash
+textwidth} 
+\backslash
+begin{flushright} 
+\backslash
+large 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{Profesores:} 
+\backslash
+
+\backslash
+ [.3cm] 
+\end_layout
+
+\begin_layout Plain Layout
+
+Daniel 
+\backslash
+textsc{Jacoby}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{flushright} 
+\backslash
+end{minipage}
+\backslash
+
+\backslash
+[2cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+--------- 
+\end_layout
+
+\begin_layout Plain Layout
+
+%	DATE SECTION 
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+---------      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill {
+\backslash
+large Entregado: 24 de Agosto de 2020}
+\backslash
+
+\backslash
+[2cm]      
+\backslash
+vfill       
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{titlepage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Part*
 Guía 1 - Procesamiento de Imágenes
 \end_layout
@@ -249,7 +576,7 @@ Iphone 7 plus
 \begin_inset Quotes erd
 \end_inset
 
- (12Mpx de resolución) para fotografiar la imagen 
+ (12Mpx de resolución = 4032x3024) para fotografiar la imagen 
 \begin_inset Quotes eld
 \end_inset
 
@@ -270,7 +597,7 @@ iso-rag
 \begin_inset Quotes erd
 \end_inset
 
- (izquierda) y la imagen tomada por la cámara (derecha):
+:
 \end_layout
 
 \begin_layout Standard
@@ -291,10 +618,84 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Imagen original
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La idea del experimento, es utilizar las barras intercaladas de negro y
+ blanco de la foto tomada a la imagen propuesta.
+ Una vez tomada la foto, se debe identificar la zona de 
+\begin_inset Quotes eld
+\end_inset
+
+alias
+\begin_inset Quotes erd
+\end_inset
+
+ de las barras, tanto horizontales como verticales.
+ Es decir, que se identfica la zona en que las barras están lo suficientemente
+ cerca como para que se comience a tener una pérdida de fidelidad en la
+ foto debido a falta de resolución.
+ Entonces, en esta zona de 
+\begin_inset Quotes eld
+\end_inset
+
+alias
+\begin_inset Quotes erd
+\end_inset
+
+ se podrá identificar el porcentaje utlizado 
+\begin_inset Quotes eld
+\end_inset
+
+efectivo
+\begin_inset Quotes erd
+\end_inset
+
+ de la cámara, dado por el cociente entre el número de barras de la imagen
+ original y el número de barras de la imagen tomada por foto.
+\end_layout
+
+\begin_layout Standard
+A continuación se muestran las fotos tomas con la cámara celular:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename fotoIPHONE.jpeg
-	scale 30
+	filename fotoIPHONE1.jpeg
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fotoIPHONE2.jpeg
+	scale 20
 
 \end_inset
 
@@ -305,7 +706,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Imagen original vs capturada por cámara
+Imagen capturada por cámara
 \end_layout
 
 \end_inset
@@ -313,13 +714,45 @@ Imagen original vs capturada por cámara
 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
+
+\begin_layout Standard
+Entonces, se tiene lo siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+HORIZONTAL\rightarrow Pixeles_{efectivos}=\frac{pixeles_{ideales}}{pixeles_{reales}}.4032=\frac{9}{14}.4032\simeq2592
+\]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+VERTICAL\rightarrow Pixeles_{efectivos}=\frac{pixeles_{ideales}}{pixeles_{reales}}.3024=\frac{9}{13}.3024\simeq2093
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto da como reusltado una resolción efectiva de 
+\begin_inset Formula $1728x2093\simeq5Mpixels<12Mpixels$
+\end_inset
+
+.
+ Esto demuestra que los pixeles pasados como especificación, no todos son
+ para representar pixeles visibles.
 \end_layout
 
 \begin_layout Section
@@ -785,10 +1218,7 @@ suaves
 \end_inset
 
 , que se notan tanto en la imágen como en las cambios de la respuesta en
- frecuencia, la cual toma valores elevados en el centro de la imagen (ya
- que en el centro de la imagen de define el rostro, con componentes de altas
- frecuencias, y que toma valores cercanos a cero en los bordes, debido a
- que casi no hay variación espacial.
+ frecuencia, la cual toma valores de pasabajos.
 \end_layout
 
 \end_body

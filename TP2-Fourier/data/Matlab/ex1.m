@@ -1,8 +1,8 @@
 clear all;
 close all;
-% h=[0 1/6 0 ; 1/6 1/3 1/6 ; 0 1/6 0 ];
-%  h = fspecial('disk');                %% LOW pass 
- h = fspecial('unsharp');              %% Hi pass
+h=[0 1/6 0 ; 1/6 1/3 1/6 ; 0 1/6 0 ];
+% h = fspecial('disk');                %% LOW pass 
+% h = fspecial('unsharp');              %% Hi pass
 
 freqz2(h);
 
@@ -12,7 +12,7 @@ freqz2(h);
 N=256;
 big=zeros(N);       %make a big image
 big(N/2,N/2)=1;     %unit impulse
-
+h
 h1=conv2(big,h);    %make conv with the filter ==> 
 
 figure

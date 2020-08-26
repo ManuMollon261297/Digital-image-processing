@@ -3,10 +3,10 @@ close all;
 h=[0 1/6 0 ; 1/6 1/3 1/6 ; 0 1/6 0 ];
 
 h = h/sum(h(:));
-h = fspecial('unsharp');
+%h = fspecial('unsharp');
 %h = fspecial('disk');
 
-b=imread('barbara.gif'); 
+b=imread('barbara.png'); 
 imshow(b);
 
 h1=imfilter(b,h);    %make conv with the filter ==> 

@@ -1,33 +1,32 @@
 import cv2 as cv
+from numpy import pi, cos, sin, log
+from numpy.fft import fft2, fftshift
+from scipy.ndimage import affine_transform
 
 f = cv.imread(filename = '../data/images/barbara.png', flags = cv.IMREAD_GRAYSCALE)
 (ysize,xsize) = f.shape
 
-#mov_pics = avifile('aliasing_pics.avi', 'fps', 10, 'compression', 'none');
-#mov_specs = avifile('aliasing_specs.avi', 'fps', 10, 'compression', 'none');
-mov_pics = VideoWriter('aliasing_pics.avi')
-mov_specs = VideoWriter('aliasing_specs.avi')
-open (mov_pics)
-open (mov_specs)
+mov_pics = cv.VideoWriter('aliasing_pics.avi', apiPreference=cv.CAP_MODE_BGR)
+mov_specs = cv.VideoWriter('aliasing_specs.avi', apiPreference=cv.
+	)
 
-for xshrink in range(0:5:600)
+for xshrink in range(0, 600, 5):
 	desiredxsize = xsize - xshrink
 	scale_shrink = desiredxsize / xsize
-	T = maketform('affine',[scale_shrink 0 0; 0 scale_shrink 0; 0 0 1])
-	f2 = imtransform(f,T)
-	[currentysize, currentxsize] = size(f2)
+	arrayT1 = np.array([[scale_shrink, 0, 0], [0, scale_shrink, 0], [0, 0, 1]])
+	f2 = affine_transform(f,arrayT1)
+	(currentysize, currentxsize) = f2.shape
 
 	scale_boost = xsize / currentxsize
-	Tinv = maketform('affine',[scale_boost 0 0; 0 scale_boost 0; 0 0 1])
+	arrayT2 = np.array([[scale_boost, 0, 0], [0, scale_boost, 0], [0, 0, 1]])
 
-	f3 = imtransform(f2,Tinv,'size',[ysize xsize])
-	Fd = fftshift(log(1+abs(fft2(f3))))
+	f3 = affine_transform(f2,arrayT2)
+	f3 = imtransform(f2,Tinv,'size', output_shape = (ysize, xsize))
 
-	fr = im2frame(f3, gray(256))
-	Fdr = im2frame(uint8(256*Fd/max(max(Fd))), gray(256))
+	Fd = fftshift(log(1+abs(fft2(f3)))/log(10))
 
-	 writeVideo(mov_pics, fr)
-	 writeVideo(mov_specs, Fdr)
+	#fr = im2frame(f3, gray(256)) #CONV
+	#Fdr = im2frame(uint8(256*Fd/Fd.max()), gray(256)) #CONV
 
-close(mov_pics)
-close(mov_specs)
+	mov_pics.write(fr)
+	mov_specs.write(Fdr)

@@ -27,31 +27,34 @@ grid2 = cos(alpha2)*X + sin(alpha2)*Y;
 
 im=11;
 
-%im = a1*sin(2*pi*f1*grid1 + phase1) + a2*sin(2*pi*f2*grid2 + phase2);
-im=zeros(xsize,ysize);
+im = a1*sin(2*pi*f1*grid1 + phase1) + a2*sin(2*pi*f2*grid2 + phase2);
+% im=zeros(xsize,ysize);
+% imshow(im);
+% hold on
+% im =sign( a1*sin(2*pi*f1*grid1 + phase1));
+% imshow(im);
+% hold on
+% im=sign ( a2*sin(2*pi*f2*grid2 + phase2));
 imshow(im);
-hold on
-im =sign( a1*sin(2*pi*f1*grid1 + phase1));
-imshow(im);
-hold on
-im=sign ( a2*sin(2*pi*f2*grid2 + phase2));
-imshow(im);
-%imshow(im,[-(a1+a2) a1+a2]);
-%imshow(im);
-%surf(im,'FaceColor','interp',...
+
+% 
+% imshow(im,[-(a1+a2) a1+a2]);
+% imshow(im);
+% surf(im,'FaceColor','interp',...
 %    'EdgeColor','none',...
 %    'FaceLighting','phong');
-%camlight left
-%camlight headlight
+% camlight left
+% camlight headlight
+% 
+% figure;
+% IM = fft2(im);
+% IMd = log(1+abs(IM));
+% 
+% imshow(fftshift(IMd/max(max(IMd))),[0 1]);
+% imshow((IMd/max(max(IMd))),[0 1]);
 
-figure;
-IM = fft2(im);
-IMd = log(1+abs(IM));
-%imshow(fftshift(IMd/max(max(IMd))),[0 1]);
-imshow((IMd/max(max(IMd))),[0 1]);
-
-%surf(fftshift(abs(IM)),'FaceColor','interp',...
+% surf(fftshift(abs(IM)),'FaceColor','interp',...
 %    'EdgeColor','none',...
 %    'FaceLighting','phong');
-%camlight left
-%camlight headlight
+% camlight left
+% camlight headlight

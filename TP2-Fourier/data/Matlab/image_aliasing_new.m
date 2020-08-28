@@ -1,8 +1,13 @@
 clear all;
 close all;
 
-f = imread('barbara.gif');
+f = imread('barbara.png');
 [ysize,xsize] = size(f);
+
+try
+    close('aliasing_pics.avi');
+catch
+end
 
 %mov_pics = avifile('aliasing_pics.avi', 'fps', 10, 'compression', 'none');
 %mov_specs = avifile('aliasing_specs.avi', 'fps', 10, 'compression', 'none');
@@ -28,7 +33,7 @@ Fd = fftshift(log(1+abs(fft2(f3))));
 %imshow(f3);
 xshrink
 fr = im2frame(f3, gray(256));
-Fdr = im2frame(uint8(256*Fd/max(max(Fd))), gray(256));
+Fdr = im2frame(uint8(256*Fd ./ max(max(Fd))), gray(256));
 
 
 % mov_pics = addframe(mov_pics, fr);

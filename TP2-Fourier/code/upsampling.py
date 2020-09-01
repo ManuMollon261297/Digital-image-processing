@@ -17,13 +17,16 @@ def upsample(img, factor):
     # Ideal filter
     n, m = iup.shape
     w = 1 / factor
+
+    # calculate fft and Shift the zero-frequency component to the center of the spectrum.
     f = fftshift(fft2(iup))
+
     for i in range(n):
         for j in range(m):
-            r2 = (i-round(n/2))**2+(j-round(m/2))**2
-            if r2 > round((n/2*w))**2:
+            r2 = (i-n//2)**2 + (j-m//2)**2
+            if r2 > round(n/2*w)**2:
                 f[i, j] = 0
 
     out = factor * factor * abs(ifft2(fftshift(f)))
-    print(out)
+
     return out

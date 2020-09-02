@@ -75,39 +75,50 @@
 
 \begin_body
 
-\begin_layout Subsection
-myallias.m
+\begin_layout Section
+upsampling.m
 \end_layout
 
 \begin_layout Standard
-Se pretende estudiar los efectos del aliasing en las imágenes.
+Se busca realizar el upsampling de una imagen
 \end_layout
 
 \begin_layout Standard
-Para cumplir con el Teorema de Shannon, para muestrear a una señal sin aliasing
- debe necesariamente contarse con una señal limitada en banda.
- Es por esto que, previo a realizar el muestreo, se suele aplicar un filtro
- pasabajos o de blurring para limitar en banda a la señal a muestrear y
- así disminuir los efectos de aliasing.
+El algoritmo a realizar, entonces, es el siguiente:
+\end_layout
+
+\begin_layout Enumerate
+Se construye una imagen nula con las dimensiones que tendría la imagen upsamplea
+da
+\end_layout
+
+\begin_layout Enumerate
+Se completa a la nueva imagen con los valores de la imagen original rellenada
+ con ceros entre los valores, haciendo efectivamente un zero padding de
+ los valores originales (pero no en los bordes de la imagen, sino entre
+ los valores)
+\end_layout
+
+\begin_layout Enumerate
+Se realiza una fft 2D de la nueva imagen.
+\end_layout
+
+\begin_layout Enumerate
+Luego, se realiza la ifft de la nueva imagen y se la filtra con un pasabajos,
+ lo que es equivalente a interpolar entre los valores.
+ El pasabajos es ideal, por lo que efectivamente se estaría usando una interpola
+ción de tipo sin(x) / x entre los valores.
 \end_layout
 
 \begin_layout Standard
-Los efectos de aliasing se pueden apreciar en los patrones de Moiré:
+En la práctica, para lograr este pasabajos de tipo ideal y ser eficiente
+ en tiempo, en vez de aplicar un pasabajos luego de realizar la ifft, se
+ anulan los valores de frecuencias altas en el paso 3 luego de hacer la
+ fft y después se hace la ifft sobre lo obtenido.
 \end_layout
 
 \begin_layout Standard
-Cuando se cuenta con una señal periódica de una frecuencia al menos dos
- veces menor a la frecuencia de sampleo, no hay aliasing en la imagen.
- Cuando se superponen dos imágenes periódicas y hay un 
-\begin_inset Quotes eld
-\end_inset
-
-quiebre
-\begin_inset Quotes erd
-\end_inset
-
- en la perioricidad de una imagen debido a la presencia de la otra, se aprecian
- los patrones de Moiré, en los cuales aparecen frecuencias extra en la imagen.
+A continuación, se muestran los resultados obtenidos:
 \end_layout
 
 \begin_layout Standard
@@ -118,8 +129,9 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename images/Im1, Im2.jpg
+	filename images/orig.jpg
 	scale 40
 
 \end_inset
@@ -131,7 +143,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Dos imágenes periódicas
+Imagen original
 \end_layout
 
 \end_inset
@@ -158,54 +170,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/Grid.jpg
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Dos imágenes periódicas superpuestas.
- Patrones de Moiré
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Se muestra a continuación el espectro de las imágenes por separado:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/Freqs1.jpg
-	scale 40
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename images/Freqs2.jpg
+	filename images/upsampled.jpg
 	scale 40
 
 \end_inset
@@ -217,37 +182,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Dos imágenes periódicas superpuestas.
- Patrones de Moiré
+Imagen upsampleada por un factor de 2
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Se muestra a continuación el espectro de las imágenes superpuestas.
- Aparecen las componentes en frecuencia superpuestas:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/Freqs.jpg
-	scale 60
 
 \end_inset
 
@@ -255,15 +191,6 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Dos imágenes periódicas superpuestas.
- Patrones de Moiré
-\end_layout
-
-\end_inset
-
 
 \end_layout
 

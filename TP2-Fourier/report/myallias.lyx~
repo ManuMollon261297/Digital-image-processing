@@ -75,8 +75,201 @@
 
 \begin_body
 
-\begin_layout Section
+\begin_layout Subsection
 myallias.m
+\end_layout
+
+\begin_layout Standard
+Se pretende estudiar los efectos del aliasing en las imágenes.
+\end_layout
+
+\begin_layout Standard
+Para cumplir con el Teorema de Shannon, para muestrear a una señal sin aliasing
+ debe necesariamente contarse con una señal limitada en banda.
+ Es por esto que, previo a realizar el muestreo, se suele aplicar un filtro
+ pasabajos o de blurring para limitar en banda a la señal a muestrear y
+ así disminuir los efectos de aliasing.
+\end_layout
+
+\begin_layout Standard
+Los efectos de aliasing se pueden apreciar en los patrones de Moiré:
+\end_layout
+
+\begin_layout Standard
+Cuando se cuenta con una señal periódica de una frecuencia al menos dos
+ veces menor a la frecuencia de sampleo, no hay aliasing en la imagen.
+ Cuando se superponen dos imágenes periódicas y hay un 
+\begin_inset Quotes eld
+\end_inset
+
+quiebre
+\begin_inset Quotes erd
+\end_inset
+
+ en la perioricidad de una imagen debido a la presencia de la otra, se aprecian
+ los patrones de Moiré, en los cuales aparecen frecuencias extra en la imagen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Im1, Im2.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Dos imágenes periódicas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Grid.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Dos imágenes periódicas superpuestas.
+ Patrones de Moiré
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se muestra a continuación el espectro de las imágenes por separado:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Freqs1.jpg
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Freqs2.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Dos imágenes periódicas superpuestas.
+ Patrones de Moiré
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se muestra a continuación el espectro de las imágenes superpuestas.
+ Aparecen las componentes en frecuencia superpuestas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Freqs.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Dos imágenes periódicas superpuestas.
+ Patrones de Moiré
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

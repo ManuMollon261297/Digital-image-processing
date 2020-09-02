@@ -38,7 +38,17 @@ print('im.dtype: ', im.dtype)
 
 im1 = sign(a1*sin(2*pi*f1*grid1 + phase1))
 im2 = sign(a2*sin(2*pi*f2*grid2 + phase2))
-# cv.imshow(mat=np.hstack((im1, im2)), winname='Im1, Im2')
+
+IM = fft2(im2)
+IMd = log(1+abs(IM))
+
+cv.imshow(mat=IMd/IMd.max(), winname='IMd')
+cv.waitKey(0)
+cv.imwrite(filename='Freqs2.jpg', img=(IMd/IMd.max() + 1)*255/2)
+
+cv.imshow(mat=np.hstack((im1, im2)), winname='Im1, Im2')
+cv.waitKey(0)
+
 im = im1+im2
 cv.imshow(mat=im, winname='imags')
 cv.waitKey(0)

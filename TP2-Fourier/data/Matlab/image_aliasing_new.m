@@ -11,8 +11,8 @@ end
 
 %mov_pics = avifile('aliasing_pics.avi', 'fps', 10, 'compression', 'none');
 %mov_specs = avifile('aliasing_specs.avi', 'fps', 10, 'compression', 'none');
-mov_pics = VideoWriter('aliasing_pics.avi');
-mov_specs = VideoWriter('aliasing_specs.avi');
+mov_pics = VideoReader('aliasing_pics.avi');
+mov_specs = VideoReader('aliasing_specs.avi');
 open (mov_pics);
 open (mov_specs);
 
@@ -39,10 +39,8 @@ Fdr = im2frame(uint8(256*Fd ./ max(max(Fd))), gray(256));
 % mov_pics = addframe(mov_pics, fr);
 % mov_specs = addframe(mov_specs, Fdr);
 
- writeVideo(mov_pics, fr);
- writeVideo(mov_specs, Fdr);
-
-
+writeVideo(mov_pics, fr);
+writeVideo(mov_specs, Fdr);
 
 
 end

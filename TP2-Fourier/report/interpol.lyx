@@ -393,7 +393,8 @@ El kernel Gaussiano es linearmente separable.
 \begin_inset Formula $O(n)$
 \end_inset
 
-
+.
+ El filtro gaussiano es el único filtro que es simétrico y linealmente separable.
 \end_layout
 
 \begin_layout Standard
@@ -514,6 +515,7 @@ status open
 \align left
 \begin_inset Graphics
 	filename images/Gaussian_Spectrum.png
+	scale 60
 
 \end_inset
 
@@ -542,7 +544,9 @@ Forma y espectro de un kernel gaussiano de 9x9 y de
 \end_layout
 
 \begin_layout Standard
-Se muestra luego la superficie 3D de un kernel Gaussiano:
+Se muestra luego la superficie 3D de un kernel Gaussiano sin interpolar.
+ Para ver la forma del filtro interpolada, ir a la próxima sección sobre
+ filtros PillBox:
 \end_layout
 
 \begin_layout Standard
@@ -584,7 +588,8 @@ superficie 3D de un kernel Gaussiano de 9x9 y de
 \end_layout
 
 \begin_layout Standard
-Procedemos a mostrar el efecto del filtro gaussiano sobre la imagen original:
+Procedemos a mostrar el efecto del filtro gaussiano sobre la imagen downsamplead
+a por un factor de dos:
 \end_layout
 
 \begin_layout Standard
@@ -628,6 +633,13 @@ Filtro Gaussiano de 9x9 y de
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Se aprecia cómo se reducen los efectos del aliasing, que siguen siendo existente
+s.
+ Esto es porque el filtro gaussiano es un filtro pasabajos que elimina las
+ frecuencias altas introducidas.
 \end_layout
 
 \begin_layout Standard
@@ -792,8 +804,92 @@ Filtrado Circular o PillBox
 
 \begin_layout Standard
 El filtro Pillbox no está implementado en openCv.
- Es más filoso o sharp que el gaussiano.
- Se muestra un kernel circular en frecuencia.:
+ Es más filoso que el gaussiano debido a ser constante en una zona y decaer
+ muy rapidamente en los extremos.
+ Tiene un tope circular y costados casi verticales
+\end_layout
+
+\begin_layout Standard
+Se muestra el kernel circular/Pillbox:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align left
+\begin_inset Graphics
+	filename images/pillbox.PNG
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Filtro PillBox
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos también observar la forma matricial de dicho filtro (en este caso
+ de radio 5):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align left
+\begin_inset Graphics
+	filename images/pillbox_matrix.PNG
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Filtro PillBox
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se muestra un kernel circular en frecuencia:
 \end_layout
 
 \begin_layout Standard
@@ -818,7 +914,50 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Filtro PillBox
+Filtro PillBox en Frecuencia
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si el lente de una cámara no está enfocado correctamente, cada punto en
+ la imagen estará proyectado en un punto circular en el sensor de la imagen.
+ El filtro pillbox es, por lo tanto, la función de un lente fuera de foco.
+\end_layout
+
+\begin_layout Standard
+El filtro pillbox es un filtro que es simétrico pero no es linealmente separable
+, por lo que su implementación será necesariamente 
+\begin_inset Formula $O(n^{2})$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+Vemos los efectos de aplicar un filtro pillbox de radio 5 a la imagen original:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Filtro PillBox en Frecuencia
 \end_layout
 
 \end_inset

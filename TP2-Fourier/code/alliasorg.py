@@ -13,7 +13,7 @@ f1 = 180     # Frequenz 1
 f2 = 8     # Frequenz 2
 a1 = 0      # Amplitude 1
 a2 = 1  	   # Amplitude 2
-phase1 = 0
+phase1 = pi/2
 phase2 = 0
 
 [X,Y] = np.meshgrid(np.arange(xsize)/xsize, np.arange(ysize)/ysize)

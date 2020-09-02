@@ -1,0 +1,974 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Alliasorg.m
+\end_layout
+
+\begin_layout Subsection
+Downsample
+\end_layout
+
+\begin_layout Standard
+Se realiza un downsampling con dos métodos de interpolación Distintos (Nearest
+ Neighbours e interpolación Bicúbica) distintos utilizando la librería opencv.
+ Se prueba con distintos valores de m (factor de downsampling).
+ Se utiliza el tamaño de imagen original (720x580) y luego se realiza sobre
+ la misma el downsample:
+\end_layout
+
+\begin_layout Enumerate
+m=1 (Sin downsample, imagen original)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Original.jpg
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Imagen original sin downsamplear
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De la imagen anterior, se aprecian detalles carácterísticos como las rayas
+ de los pantalones, las rayas del mantel y del pañuelo de la mujer.
+ Se aprecia por otro lado la suavidad de la cara y de la piel en conjunto
+ con el piso.
+\end_layout
+
+\begin_layout Enumerate
+m = 2
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/DownSampled_2.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Izquierda: NN, Derecha:Bicúbica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Con un factor de downsample de 2, se aprecian efectos de aliasing (aparecen
+ los efectos de moiré en el pantalón de forma circular).
+ Esto se debe a que no se está cumpliendo con el teorema de sampleo de Shanon
+ de forma notable.
+\end_layout
+
+\begin_layout Standard
+Se compara el Nearest Neighbours con la bicúbica y parecería que los efectos
+ del aliasing son menos profundos con la interpolación bicúbica.
+\end_layout
+
+\begin_layout Enumerate
+m = 3
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/DownSampled_3.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Izquierda: NN, Derecha:Bicúbica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo mencionado para la imagen anterior se cumple también para esta imagen
+ y para la imagen con un mayor factor de downsample.
+ Se observa, como era de espear, que a medida que aumenta el factor de downsampl
+e, también lo hace el aliasing apreciable.
+ Parecería ser que la bicúbica sigue teniendo mejor performance que NearestNeigh
+bour.
+\end_layout
+
+\begin_layout Enumerate
+m = 5:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/DownSampled_5.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Izquierda: NN, Derecha:Bicúbica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Método de Nearest Neighbours
+\end_layout
+
+\begin_layout Standard
+El método de Nearest Neighbours para realizar downsample como caso general
+ consiste en, conceptualmente, superponer una grilla con cantidad de agujeros
+ en cada eje iguales a la dimensión de la imagen final en su respectivo
+ eje.
+ Como se está realizando downsample, queda claro que más de un pixel entrará
+ en cada uno de los agujeros de la grilla, y se elige el valor del píxel
+ que se considera más cercano al agujero de la grilla.
+\end_layout
+
+\begin_layout Standard
+Vale mencionar que la analogía inversa vale para cuando se está intentando
+ realizar un upsampling de la imagen a través de interpolación Nearest Neighbour
+s
+\end_layout
+
+\begin_layout Standard
+Así se obtiene la nueva imagen.
+ Otra posible implementación del downsample a través de Nearest Neighbours
+ surge en el caso particular en que el factor 
+\begin_inset Formula $m$
+\end_inset
+
+ de downsample sea un número entero (como son los casos mostrados anteriormente)
+, en el cual basta con eliminar 
+\begin_inset Formula $1$
+\end_inset
+
+ de cada 
+\begin_inset Formula $m$
+\end_inset
+
+ píxeles de la imagen original para obtener la nueva imagen.
+\end_layout
+
+\begin_layout Subsubsection
+Soluciones al problema de aliasing
+\end_layout
+
+\begin_layout Standard
+Para reducir los efectos de aliasing al realizar downsample, se suele aplicar
+ un efecto de blur antes de realizar el downsample.
+\end_layout
+
+\begin_layout Standard
+Cabe destacar que específicamente para downsampling, la librería openCV
+ recomienda el uso del método de interpolación INTER_AREA que realiza un
+ resample usando la relación en área de pixel, el cual da resultados libres
+ de moiré, es decir, libres de aliasing.
+\end_layout
+
+\begin_layout Subsection
+Filtrado
+\end_layout
+
+\begin_layout Subsubsection
+Filtrado Gaussiano
+\end_layout
+
+\begin_layout Standard
+El filtro gaussiano es un filtro pasabajos en el cual sus pesos derivan
+ de la función gaussiana, lo que termina siendo un filtro pasabajos implementado
+ a partir de un promedio ponderado, de mayor influencia por parte del píxel
+ central del kernel y menor influencia a medida que me alejo de dicho pixel
+ en el kernel.
+\end_layout
+
+\begin_layout Standard
+Se utilizó el filtrado Gaussiano de la librería opencv.
+ Dicha función no acepta kernels de tamaño par (no acepta realizar un filtrado,
+ por ejemplo, con un kernel gaussiano de 8x8, pero sí con uno de 9x9).
+\end_layout
+
+\begin_layout Standard
+Para discretizar la función gaussiana, usamos el hecho de que el 99.3% de
+ la distribución cae dentro de los 3 devíos estándar alrededor de la media,
+ luego este intervalo los valores de la gaussiana serán muy cercanos a cero.
+ Es por esto que la función de opencv se limita a tomar valores en este
+ rango.
+\end_layout
+
+\begin_layout Standard
+Al discretizar a esta función de dominio infinito, se está haciendo que
+ la función deje de integrar 1, por lo que se debe normalizar al kernel
+ (dividiendo al kernel por la suma de todos los elementos del mismo) para
+ que la imagen no se vuelva más brillante o más oscura que lo que era originalme
+nte.
+\end_layout
+
+\begin_layout Standard
+Hay algunas propiedades del filtro gaussiano que son de interés a la hora
+ de hacerlo más eficiente:
+\end_layout
+
+\begin_layout Itemize
+El kernel Gaussiano es linearmente separable.
+ Esto significa que podemos separar al filtro 
+\begin_inset Formula $h$
+\end_inset
+
+ de 2 dimensiones en dos filtros 1D, 
+\begin_inset Formula $h_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $h_{2}$
+\end_inset
+
+.
+ Gracias a esto, complejidad computational se ve reducida de 
+\begin_inset Formula $O(n^{2})$
+\end_inset
+
+ a 
+\begin_inset Formula $O(n)$
+\end_inset
+
+.
+ El filtro gaussiano es el único filtro que es simétrico y linealmente separable.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/mat.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cómo pasar de un kernel Gaussiano 1D a uno 2D
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Aplicar sucesivamente kernels Gaussianos es equivalente a aplicar un único
+ blur Gaussiano más grande, cuyo radio es la raíz cuadrada de la suma de
+ los cuadrados de los radios de los múltiples kernel gaussianos.
+ Usando esta propuedad, podemos aproximar un filtro no separable como una
+ combinación de múltiples filtros separables.
+\end_layout
+
+\begin_layout Itemize
+Los pesos del kernel Gaussiano 1-D pueden ser obtenidos rápidamente usando
+ el Triángulo Pascal.
+ Podemos apreciar como la última fila del triángulo corresponde a los pesos
+ de la matriz mostrada en la imagen anterior.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/pascal.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Triángulo de Pascal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Debido a estas propiedades, el filtro gaussiano es el más eficiente y el
+ más comunmente usado de los filtros pasabajos/de blurring.
+\end_layout
+
+\begin_layout Standard
+OpenCv permite obtener el filtro lineal 1D gaussiano para aplicarlo de forma
+ separable así como también tiene una función específica para aplicar filtros
+ gaussianos.
+\end_layout
+
+\begin_layout Standard
+Se muestra a continuación la forma y el espectro de un kernel gaussiano
+ de 9x9 y de 
+\begin_inset Formula $\sigma=0.8$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align left
+\begin_inset Graphics
+	filename images/Gaussian_Spectrum.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Forma y espectro de un kernel gaussiano de 9x9 y de 
+\begin_inset Formula $\sigma=0.8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se muestra luego la superficie 3D de un kernel Gaussiano sin interpolar.
+ Para ver la forma del filtro interpolada, ir a la próxima sección sobre
+ filtros PillBox:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Gaussian3D.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+superficie 3D de un kernel Gaussiano de 9x9 y de 
+\begin_inset Formula $\sigma=0.8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Procedemos a mostrar el efecto del filtro gaussiano sobre la imagen downsamplead
+a por un factor de dos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/kernel=9, sigma=1.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Filtro Gaussiano de 9x9 y de 
+\begin_inset Formula $\sigma=1$
+\end_inset
+
+ aplicado a la imagen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se aprecia cómo se reducen los efectos del aliasing, que siguen siendo existente
+s.
+ Esto es porque el filtro gaussiano es un filtro pasabajos que elimina las
+ frecuencias altas introducidas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/kernel=5, sigma=1.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Filtro Gaussiano de 5x5 y de 
+\begin_inset Formula $\sigma=1$
+\end_inset
+
+ aplicado a la imagen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/kernel=9, sigma=5.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Filtro Gaussiano de 9x9 y de 
+\begin_inset Formula $\sigma=5$
+\end_inset
+
+ aplicado a la imagen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/kernel=5, sigma=5.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Filtro Gaussiano de 5x5 y de 
+\begin_inset Formula $\sigma=5$
+\end_inset
+
+ aplicado a la imagen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/kernel=3, sigma=5.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Filtro Gaussiano de 3x3 y de 
+\begin_inset Formula $\sigma=5$
+\end_inset
+
+ aplicado a la imagen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Filtrado Circular o PillBox
+\end_layout
+
+\begin_layout Standard
+El filtro Pillbox no está implementado en openCv.
+ Es más filoso que el gaussiano debido a ser constante en una zona y decaer
+ muy rapidamente en los extremos.
+ Tiene un tope circular y costados casi verticales
+\end_layout
+
+\begin_layout Standard
+Se muestra el kernel circular/Pillbox:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align left
+\begin_inset Graphics
+	filename images/pillbox.PNG
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Filtro PillBox
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos también observar la forma matricial de dicho filtro (en este caso
+ de radio 5):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align left
+\begin_inset Graphics
+	filename images/pillbox_matrix.PNG
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Filtro PillBox
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se muestra un kernel circular en frecuencia:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/disk.jpg
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Filtro PillBox en Frecuencia
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si el lente de una cámara no está enfocado correctamente, cada punto en
+ la imagen estará proyectado en un punto circular en el sensor de la imagen.
+ El filtro pillbox es, por lo tanto, la función de un lente fuera de foco.
+\end_layout
+
+\begin_layout Standard
+El filtro pillbox es un filtro que es simétrico pero no es linealmente separable
+, por lo que su implementación será necesariamente 
+\begin_inset Formula $O(n^{2})$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+Vemos los efectos de aplicar un filtro pillbox de radio 5 a la imagen original:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Filtro PillBox en Frecuencia
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

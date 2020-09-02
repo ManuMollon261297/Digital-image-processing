@@ -100,11 +100,21 @@ Se completa a la nueva imagen con los valores de la imagen original rellenada
 \end_layout
 
 \begin_layout Enumerate
+Se realiza una fft 2D de la nueva imagen.
+\end_layout
+
+\begin_layout Enumerate
 Luego, se realiza la ifft de la nueva imagen y se la filtra con un pasabajos,
  lo que es equivalente a interpolar entre los valores.
  El pasabajos es ideal, por lo que efectivamente se estaría usando una interpola
 ción de tipo sin(x) / x entre los valores.
- Para lograr este pasabajos de tipo ideal y ser eficiente en tiempo.
+\end_layout
+
+\begin_layout Standard
+En la práctica, para lograr este pasabajos de tipo ideal y ser eficiente
+ en tiempo, en vez de aplicar un pasabajos luego de realizar la ifft, se
+ anulan los valores de frecuencias altas en el paso 3 luego de hacer la
+ fft y después se hace la ifft sobre lo obtenido.
 \end_layout
 
 \end_body

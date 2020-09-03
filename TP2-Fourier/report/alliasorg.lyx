@@ -79,8 +79,9 @@
 Alliasorg.m
 \end_layout
 
-\begin_layout Subsection
-Downsample
+\begin_layout Standard
+En este ejercicio se propuso el siguiente código para generar una imagen
+ que recorre periódicamente los tonos de grises de forma senoidal:
 \end_layout
 
 \begin_layout Standard
@@ -106,7 +107,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Imagen original sin downsamplear
+Código propuesto
 \end_layout
 
 \end_inset
@@ -117,6 +118,16 @@ Imagen original sin downsamplear
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Se puede notar que la imagen depende de variables definidas en el código,
+ como lo son la frecuencia, la fase y la rotación.
+ Estos pueden ser considerados parámetros para observar los cambios espaciales
+ en la imagen y también los cambios espectrales.
+ Con la configuración que se muestra en la figura (frecuencia = 180, fase
+ = 90° y rotación = 45°) se obtuvo la imagen que se muestra a continuación,
+ junto con su espectro:
 \end_layout
 
 \begin_layout Standard
@@ -142,7 +153,15 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Imagen original sin downsamplear
+Imagen rotada 45° - 
+\begin_inset Quotes eld
+\end_inset
+
+degrade
+\begin_inset Quotes erd
+\end_inset
+
+ senoidal
 \end_layout
 
 \end_inset
@@ -178,7 +197,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Imagen original sin downsamplear
+Espectro del degrade senoidal rotado
 \end_layout
 
 \end_inset
@@ -192,14 +211,9 @@ Imagen original sin downsamplear
 \end_layout
 
 \begin_layout Standard
-De la imagen anterior, se aprecian detalles carácterísticos como las rayas
- de los pantalones, las rayas del mantel y del pañuelo de la mujer.
- Se aprecia por otro lado la suavidad de la cara y de la piel en conjunto
- con el piso.
-\end_layout
-
-\begin_layout Enumerate
-m = 2
+Para interpretar el espectro de estas señales de una manera gráfica, se
+ generará nuevamente la imagen, pero con rotación de 90 grados y también
+ sin rotación:
 \end_layout
 
 \begin_layout Standard
@@ -207,12 +221,70 @@ m = 2
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/DownSampled_2.jpg
+	filename images/alliasorgVerticales.PNG
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/FFT2deltaALLIASORG.PNG
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Imagen Líneas Verticales - 
+\begin_inset Quotes eld
+\end_inset
+
+degrade
+\begin_inset Quotes erd
+\end_inset
+
+ senoidal Horizontal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/alliasorgHorizontales.PNG
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/FFT2horizontales.PNG
 	scale 60
 
 \end_inset
@@ -221,61 +293,19 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Izquierda: NN, Derecha:Bicúbica
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Con un factor de downsample de 2, se aprecian efectos de aliasing (aparecen
- los efectos de moiré en el pantalón de forma circular).
- Esto se debe a que no se está cumpliendo con el teorema de sampleo de Shanon
- de forma notable.
-\end_layout
-
-\begin_layout Standard
-Se compara el Nearest Neighbours con la bicúbica y parecería que los efectos
- del aliasing son menos profundos con la interpolación bicúbica.
-\end_layout
-
-\begin_layout Enumerate
-m = 3
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \align center
-\begin_inset Graphics
-	filename images/DownSampled_3.jpg
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Izquierda: NN, Derecha:Bicúbica
+Imagen Líneas Horizontales - 
+\begin_inset Quotes eld
+\end_inset
+
+degrade
+\begin_inset Quotes erd
+\end_inset
+
+ senoidal Vertical
 \end_layout
 
 \end_inset
@@ -289,749 +319,43 @@ Izquierda: NN, Derecha:Bicúbica
 \end_layout
 
 \begin_layout Standard
-Lo mencionado para la imagen anterior se cumple también para esta imagen
- y para la imagen con un mayor factor de downsample.
- Se observa, como era de espear, que a medida que aumenta el factor de downsampl
-e, también lo hace el aliasing apreciable.
- Parecería ser que la bicúbica sigue teniendo mejor performance que NearestNeigh
-bour.
-\end_layout
+Lo que se logra apreciar en el espectro de las imagenes, es que existen
+ un par de 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Enumerate
-m = 5:
+deltas
+\begin_inset Quotes erd
+\end_inset
+
+ simétricas con respecto al origen (definido por el centro de la imagen),
+ y sobre un eje, el cual es el eje en el que la imagen sufre el cambio senoidal
+ a una frecuencia definida.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/DownSampled_5.jpg
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Izquierda: NN, Derecha:Bicúbica
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Método de Nearest Neighbours
+Se cumple esto para todas las rotaciones, es decir que al rotar la imagen
+ también rota el espectro.
 \end_layout
 
 \begin_layout Standard
-El método de Nearest Neighbours para realizar downsample como caso general
- consiste en, conceptualmente, superponer una grilla con cantidad de agujeros
- en cada eje iguales a la dimensión de la imagen final en su respectivo
- eje.
- Como se está realizando downsample, queda claro que más de un pixel entrará
- en cada uno de los agujeros de la grilla, y se elige el valor del píxel
- que se considera más cercano al agujero de la grilla.
-\end_layout
-
-\begin_layout Standard
-Vale mencionar que la analogía inversa vale para cuando se está intentando
- realizar un upsampling de la imagen a través de interpolación Nearest Neighbour
-s
-\end_layout
-
-\begin_layout Standard
-Así se obtiene la nueva imagen.
- Otra posible implementación del downsample a través de Nearest Neighbours
- surge en el caso particular en que el factor 
-\begin_inset Formula $m$
+Una novedad que puede verse es que el espectro de la imagen rotada a 45°,
+ no solo cuenta con las deltas de dirac ya mencionadas, si no que además
+ presenta líneas que parecen continuas y se intersectan formando 4 cruces.
+ Sobre esto, se pudo corroborar que no es un efecto visible en un especrtro
+ con escala lineal, si no que es generado debido a una distorsión introducida
+ por la escala logarítmica, la cual, por cuestiones de saturación de funciones
+ como 
+\begin_inset Quotes eld
 \end_inset
 
- de downsample sea un número entero (como son los casos mostrados anteriormente)
-, en el cual basta con eliminar 
-\begin_inset Formula $1$
+imshow
+\begin_inset Quotes erd
 \end_inset
 
- de cada 
-\begin_inset Formula $m$
-\end_inset
-
- píxeles de la imagen original para obtener la nueva imagen.
-\end_layout
-
-\begin_layout Subsubsection
-Soluciones al problema de aliasing
-\end_layout
-
-\begin_layout Standard
-Para reducir los efectos de aliasing al realizar downsample, se suele aplicar
- un efecto de blur antes de realizar el downsample.
-\end_layout
-
-\begin_layout Standard
-Cabe destacar que específicamente para downsampling, la librería openCV
- recomienda el uso del método de interpolación INTER_AREA que realiza un
- resample usando la relación en área de pixel, el cual da resultados libres
- de moiré, es decir, libres de aliasing.
-\end_layout
-
-\begin_layout Subsection
-Filtrado
-\end_layout
-
-\begin_layout Subsubsection
-Filtrado Gaussiano
-\end_layout
-
-\begin_layout Standard
-El filtro gaussiano es un filtro pasabajos en el cual sus pesos derivan
- de la función gaussiana, lo que termina siendo un filtro pasabajos implementado
- a partir de un promedio ponderado, de mayor influencia por parte del píxel
- central del kernel y menor influencia a medida que me alejo de dicho pixel
- en el kernel.
-\end_layout
-
-\begin_layout Standard
-Se utilizó el filtrado Gaussiano de la librería opencv.
- Dicha función no acepta kernels de tamaño par (no acepta realizar un filtrado,
- por ejemplo, con un kernel gaussiano de 8x8, pero sí con uno de 9x9).
-\end_layout
-
-\begin_layout Standard
-Para discretizar la función gaussiana, usamos el hecho de que el 99.3% de
- la distribución cae dentro de los 3 devíos estándar alrededor de la media,
- luego este intervalo los valores de la gaussiana serán muy cercanos a cero.
- Es por esto que la función de opencv se limita a tomar valores en este
- rango.
-\end_layout
-
-\begin_layout Standard
-Al discretizar a esta función de dominio infinito, se está haciendo que
- la función deje de integrar 1, por lo que se debe normalizar al kernel
- (dividiendo al kernel por la suma de todos los elementos del mismo) para
- que la imagen no se vuelva más brillante o más oscura que lo que era originalme
-nte.
-\end_layout
-
-\begin_layout Standard
-Hay algunas propiedades del filtro gaussiano que son de interés a la hora
- de hacerlo más eficiente:
-\end_layout
-
-\begin_layout Itemize
-El kernel Gaussiano es linearmente separable.
- Esto significa que podemos separar al filtro 
-\begin_inset Formula $h$
-\end_inset
-
- de 2 dimensiones en dos filtros 1D, 
-\begin_inset Formula $h_{1}$
-\end_inset
-
- y 
-\begin_inset Formula $h_{2}$
-\end_inset
-
-.
- Gracias a esto, complejidad computational se ve reducida de 
-\begin_inset Formula $O(n^{2})$
-\end_inset
-
- a 
-\begin_inset Formula $O(n)$
-\end_inset
-
-.
- El filtro gaussiano es el único filtro que es simétrico y linealmente separable.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/mat.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Cómo pasar de un kernel Gaussiano 1D a uno 2D
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Aplicar sucesivamente kernels Gaussianos es equivalente a aplicar un único
- blur Gaussiano más grande, cuyo radio es la raíz cuadrada de la suma de
- los cuadrados de los radios de los múltiples kernel gaussianos.
- Usando esta propuedad, podemos aproximar un filtro no separable como una
- combinación de múltiples filtros separables.
-\end_layout
-
-\begin_layout Itemize
-Los pesos del kernel Gaussiano 1-D pueden ser obtenidos rápidamente usando
- el Triángulo Pascal.
- Podemos apreciar como la última fila del triángulo corresponde a los pesos
- de la matriz mostrada en la imagen anterior.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/pascal.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Triángulo de Pascal
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Debido a estas propiedades, el filtro gaussiano es el más eficiente y el
- más comunmente usado de los filtros pasabajos/de blurring.
-\end_layout
-
-\begin_layout Standard
-OpenCv permite obtener el filtro lineal 1D gaussiano para aplicarlo de forma
- separable así como también tiene una función específica para aplicar filtros
- gaussianos.
-\end_layout
-
-\begin_layout Standard
-Se muestra a continuación la forma y el espectro de un kernel gaussiano
- de 9x9 y de 
-\begin_inset Formula $\sigma=0.8$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align left
-\begin_inset Graphics
-	filename images/Gaussian_Spectrum.png
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Forma y espectro de un kernel gaussiano de 9x9 y de 
-\begin_inset Formula $\sigma=0.8$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Se muestra luego la superficie 3D de un kernel Gaussiano sin interpolar.
- Para ver la forma del filtro interpolada, ir a la próxima sección sobre
- filtros PillBox:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/Gaussian3D.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-superficie 3D de un kernel Gaussiano de 9x9 y de 
-\begin_inset Formula $\sigma=0.8$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Procedemos a mostrar el efecto del filtro gaussiano sobre la imagen downsamplead
-a por un factor de dos:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/kernel=9, sigma=1.jpg
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Filtro Gaussiano de 9x9 y de 
-\begin_inset Formula $\sigma=1$
-\end_inset
-
- aplicado a la imagen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Se aprecia cómo se reducen los efectos del aliasing, que siguen siendo existente
-s.
- Esto es porque el filtro gaussiano es un filtro pasabajos que elimina las
- frecuencias altas introducidas.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/kernel=5, sigma=1.jpg
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Filtro Gaussiano de 5x5 y de 
-\begin_inset Formula $\sigma=1$
-\end_inset
-
- aplicado a la imagen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/kernel=9, sigma=5.jpg
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Filtro Gaussiano de 9x9 y de 
-\begin_inset Formula $\sigma=5$
-\end_inset
-
- aplicado a la imagen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/kernel=5, sigma=5.jpg
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Filtro Gaussiano de 5x5 y de 
-\begin_inset Formula $\sigma=5$
-\end_inset
-
- aplicado a la imagen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/kernel=3, sigma=5.jpg
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Filtro Gaussiano de 3x3 y de 
-\begin_inset Formula $\sigma=5$
-\end_inset
-
- aplicado a la imagen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Filtrado Circular o PillBox
-\end_layout
-
-\begin_layout Standard
-El filtro Pillbox no está implementado en openCv.
- Es más filoso que el gaussiano debido a ser constante en una zona y decaer
- muy rapidamente en los extremos.
- Tiene un tope circular y costados casi verticales
-\end_layout
-
-\begin_layout Standard
-Se muestra el kernel circular/Pillbox:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align left
-\begin_inset Graphics
-	filename images/pillbox.PNG
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Filtro PillBox
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Podemos también observar la forma matricial de dicho filtro (en este caso
- de radio 5):
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align left
-\begin_inset Graphics
-	filename images/pillbox_matrix.PNG
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Filtro PillBox
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Se muestra un kernel circular en frecuencia:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/disk.jpg
-	scale 20
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Filtro PillBox en Frecuencia
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Si el lente de una cámara no está enfocado correctamente, cada punto en
- la imagen estará proyectado en un punto circular en el sensor de la imagen.
- El filtro pillbox es, por lo tanto, la función de un lente fuera de foco.
-\end_layout
-
-\begin_layout Standard
-El filtro pillbox es un filtro que es simétrico pero no es linealmente separable
-, por lo que su implementación será necesariamente 
-\begin_inset Formula $O(n^{2})$
-\end_inset
-
- .
-\end_layout
-
-\begin_layout Standard
-Vemos los efectos de aplicar un filtro pillbox de radio 5 a la imagen original:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Filtro PillBox en Frecuencia
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+, es necesaria graficarla realizando log(1+FFT), en lugar de log(FFT) como
+ se haría normalmente para análisis de señales temporales y de una sola
+ dimensión.
 \end_layout
 
 \end_body

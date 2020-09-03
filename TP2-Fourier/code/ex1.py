@@ -18,6 +18,7 @@ big = np.zeros((N,N))	#make a big image
 big[int(N/2)][int(N/2)] = 1  	#unit impulse
 
 h1 = signal.convolve2d(big, h) # conv with the filter
+print(len(h1))
 S = fft2(h1) # Spectrum
 SM = abs(S) # Modulo
 IMd = log(1+abs(SM))/log(10)

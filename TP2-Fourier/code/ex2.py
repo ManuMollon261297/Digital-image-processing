@@ -6,7 +6,6 @@ h = np.array([[0, 1/6, 0], [1/6, 1/3, 1/6], [0, 1/6, 0]])
 h = h/np.sum(h)
 # h = fspecial('unsharp')
 # h = fspecial('disk')
-
 img = cv.imread(filename = '../data/images/barbara.png', flags = cv.IMREAD_GRAYSCALE)
 print(img.shape)
 

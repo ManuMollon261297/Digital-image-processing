@@ -1,0 +1,1225 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{titlepage}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+HRule}{
+\backslash
+rule{
+\backslash
+linewidth}{0.5mm}}       
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+center        
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+--------- 
+\end_layout
+
+\begin_layout Plain Layout
+
+%	HEADING SECTIONS 
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+---------      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{
+\backslash
+LARGE Instituto Tecnológico de Buenos Aires}
+\backslash
+
+\backslash
+[2cm]  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{
+\backslash
+Large 22.48 - Procesamiento de imágenes}
+\backslash
+
+\backslash
+[1.5cm]  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{
+\backslash
+large Trabajo Práctico N°1}
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+--------- 
+\end_layout
+
+\begin_layout Plain Layout
+
+%	TITLE SECTION 
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+---------      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+HRule 
+\backslash
+
+\backslash
+[0.5cm] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{ 
+\backslash
+huge Guía 1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.4cm]  
+\backslash
+HRule 
+\backslash
+
+\backslash
+[2cm]       
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+--------- 
+\end_layout
+
+\begin_layout Plain Layout
+
+%	AUTHOR SECTION 
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+---------      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{0.4
+\backslash
+textwidth} 
+\backslash
+begin{flushleft} 
+\backslash
+large 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{Grupo 1:}
+\backslash
+
+\backslash
+		 [.3cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+Matías Agustín 
+\backslash
+textsc{Larroque}
+\backslash
+
+\backslash
+ Leg.
+ 56597 
+\backslash
+
+\backslash
+  [.3cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+Tomás Agustín 
+\backslash
+textsc{González Orlando}
+\backslash
+
+\backslash
+ Leg.
+ 57090 
+\backslash
+
+\backslash
+  [.3cm] 
+\end_layout
+
+\begin_layout Plain Layout
+
+Manuel Fernando 
+\backslash
+textsc{Mollón}
+\backslash
+
+\backslash
+ Leg.
+ 58023 
+\backslash
+
+\backslash
+  [.3cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{flushleft} 
+\backslash
+end{minipage} ~ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{0.4
+\backslash
+textwidth} 
+\backslash
+begin{flushright} 
+\backslash
+large 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{Profesores:} 
+\backslash
+
+\backslash
+ [.3cm] 
+\end_layout
+
+\begin_layout Plain Layout
+
+Daniel 
+\backslash
+textsc{Jacoby}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{flushright} 
+\backslash
+end{minipage}
+\backslash
+
+\backslash
+[2cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+--------- 
+\end_layout
+
+\begin_layout Plain Layout
+
+%	DATE SECTION 
+\end_layout
+
+\begin_layout Plain Layout
+
+%-------------------------------------------------------------------------------
+---------      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill {
+\backslash
+large Entregado: 24 de Agosto de 2020}
+\backslash
+
+\backslash
+[2cm]      
+\backslash
+vfill       
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{titlepage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Guía 2 - Representación de imagenes y sus espectros
+\end_layout
+
+\begin_layout Section
+Modelado de Ojo
+\end_layout
+
+\begin_layout Standard
+Suponiendo al ojo como un sistema lente-sensor, con el sensor conformado
+ por una densidad de conos de 150000 conos/mm2 y un área de 
+\begin_inset Formula $1.5mm\;x\;1.5mm=2.25mm^{2}\Rightarrow337500$
+\end_inset
+
+ conos en total.
+ Por lo tanto, se pueden aproximar unos 
+\begin_inset Formula $\sqrt{337500}\simeq580$
+\end_inset
+
+ conos tanto de largo como de ancho.
+ Entonces por cada milímetro (lineal) se tienen 
+\begin_inset Formula $\frac{580}{1.5}=387\frac{conos}{mm}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Para que un pixel de la imagen sea perceptible por el ojo, debe captarse
+ un tamaño mayor o igual a el de un cono.
+ Por lo tanto debe captarse un tamaño lineal 
+\begin_inset Formula $\geq\frac{1}{387}mm\simeq2.5\mu m$
+\end_inset
+
+.
+ Teniendo en cuenta la lente, cuya distancia al sensor es de 
+\begin_inset Formula $15mm0.015m$
+\end_inset
+
+ aproximadamente, y que la distancia al pixel es de 
+\begin_inset Formula $30cm=0.3m$
+\end_inset
+
+, entonces el mínimo tamaño lineal 
+\begin_inset Formula $"X"$
+\end_inset
+
+ de un pixel se calcula de la siguiente manera:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{X}{0.3}=\frac{2.5x10^{-6}}{0.015}\Rightarrow X=50\mu m
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hoy en día en los pixeles de celulares rondan en promedio aproximadamente
+ 
+\begin_inset Formula $1um$
+\end_inset
+
+ lineal.
+ Esto tiene sentido, ya que de esta manera el ojo humano no puede distinguir
+ cada pixel, lo cual da la sensación de que se tiene en frente un 
+\begin_inset Quotes eld
+\end_inset
+
+continuo
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+También se puede destacar que al ir aumentando la resolución, llega un punto
+ en que no tendría sentido una mayor resolución ya que significaría un tamaño
+ menor de pixel el cual no sería detectable por el ojo humano (o al menos
+ por el modelo planteado).
+ 
+\end_layout
+
+\begin_layout Section
+Cálculos de Resoluciones
+\end_layout
+
+\begin_layout Standard
+Supongase que se fotografía una imagen con una camara que tiene una distancia
+ focal de 
+\begin_inset Formula $35mm$
+\end_inset
+
+, con un CCD de 
+\begin_inset Formula $10mm$
+\end_inset
+
+ x 
+\begin_inset Formula $10mm$
+\end_inset
+
+ y 
+\begin_inset Formula $1Mpixel$
+\end_inset
+
+ de resolución.
+ Se pretende entonces calcular cuantos milímetros representa un pixel en
+ la imagen fotografiada.
+ Se calcula de la siguiente manera:
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $"X"$
+\end_inset
+
+ el tamaño lineal (ya sea vertical u horizontal) de la imagen que capta
+ la lente de la cámara, sea la distancia de la imagen a la cámara igual
+ a 
+\begin_inset Formula $1m$
+\end_inset
+
+ y dado que en el CCD existen 
+\begin_inset Formula $\frac{1000pixeles}{10mm}$
+\end_inset
+
+ lineales:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{X}{1}=\frac{0.01}{0.0035}\Rightarrow X\simeq286mm
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces para estos 
+\begin_inset Formula $286mm$
+\end_inset
+
+ la cámara dispone de 
+\begin_inset Formula $1000pixeles$
+\end_inset
+
+, por lo tanto un pixel representa aproximadamente 
+\begin_inset Formula $5.4mm$
+\end_inset
+
+ de la imagen captada por la lente de la cámara.
+\end_layout
+
+\begin_layout Section
+Medición de Resolución
+\end_layout
+
+\begin_layout Standard
+Se utilizó la cámara de un celular 
+\begin_inset Quotes eld
+\end_inset
+
+Iphone 7 plus
+\begin_inset Quotes erd
+\end_inset
+
+ (12Mpx de resolución = 4032x3024) para fotografiar la imagen 
+\begin_inset Quotes eld
+\end_inset
+
+iso-rag.jpg
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+A continuación se muestra la imagen 
+\begin_inset Quotes eld
+\end_inset
+
+iso-rag
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename iso-rag.jpg
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Imagen original
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La idea del experimento, es utilizar las barras intercaladas de negro y
+ blanco de la foto tomada a la imagen propuesta.
+ Una vez tomada la foto, se debe identificar la zona de 
+\begin_inset Quotes eld
+\end_inset
+
+alias
+\begin_inset Quotes erd
+\end_inset
+
+ de las barras, tanto horizontales como verticales.
+ Es decir, que se identfica la zona en que las barras están lo suficientemente
+ cerca como para que se comience a tener una pérdida de fidelidad en la
+ foto debido a falta de resolución.
+ Entonces, en esta zona de 
+\begin_inset Quotes eld
+\end_inset
+
+alias
+\begin_inset Quotes erd
+\end_inset
+
+ se podrá identificar el porcentaje utlizado 
+\begin_inset Quotes eld
+\end_inset
+
+efectivo
+\begin_inset Quotes erd
+\end_inset
+
+ de la cámara, dado por el cociente entre el número de barras de la imagen
+ original y el número de barras de la imagen tomada por foto.
+\end_layout
+
+\begin_layout Standard
+A continuación se muestran las fotos tomas con la cámara celular:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fotoIPHONE1.jpeg
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fotoIPHONE2.jpeg
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Imagen capturada por cámara
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces, se tiene lo siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+HORIZONTAL\rightarrow Pixeles_{efectivos}=\frac{pixeles_{ideales}}{pixeles_{reales}}.4032=\frac{9}{14}.4032\simeq2592
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+VERTICAL\rightarrow Pixeles_{efectivos}=\frac{pixeles_{ideales}}{pixeles_{reales}}.3024=\frac{9}{13}.3024\simeq2093
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto da como reusltado una resolción efectiva de 
+\begin_inset Formula $1728x2093\simeq5Mpixels<12Mpixels$
+\end_inset
+
+.
+ Esto demuestra que los pixeles pasados como especificación, no todos son
+ para representar pixeles visibles.
+\end_layout
+
+\begin_layout Section
+Frecuencia Espacial
+\end_layout
+
+\begin_layout Standard
+resuelto en main.py (run_ej4())
+\end_layout
+
+\begin_layout Standard
+Se requiere opencv-python 4.4.0.42 y numpy 1.19.1.
+\end_layout
+
+\begin_layout Standard
+Se puedo notar que el cuadrado central que tiene un fondo más oscuro, 
+\begin_inset Quotes eld
+\end_inset
+
+parece
+\begin_inset Quotes erd
+\end_inset
+
+ a la vista más brillante o claro, con respecto al pixel central, que tiene
+ la misma luminancia pero con un fondo más claro que el primero.
+\end_layout
+
+\begin_layout Standard
+Luego, se varió la luminancia de ambos pixeles centrales para ver el efecto
+ a distintos valores de luminancia.
+ En los valores extremos (0 - negro y 255 -blanco), se vió disminuido el
+ efecto visual.
+\end_layout
+
+\begin_layout Section
+Decimación e Interpolación
+\end_layout
+
+\begin_layout Subsection
+Decimación
+\end_layout
+
+\begin_layout Standard
+Se procedió a realizar varias decimaciones de la imagen 
+\begin_inset Quotes eld
+\end_inset
+
+mono.bmp
+\begin_inset Quotes erd
+\end_inset
+
+, que se pueden realizar en main.py (run_ej5a(), run_ej5b() y run_ej5c()),
+ en las cuales se tomaron porciones de 4x4 pixeles y se obtuvieron los siguiente
+s resultados:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename mono.bmp
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Imagen 
+\begin_inset Quotes eld
+\end_inset
+
+mono.bmp
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename decimacionA.PNG
+	scale 40
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename decimacionB.PNG
+	scale 90
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename decimacionC.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Decimaciones - Resultados
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la primer imagen (correspondiente a la primer decimación), se tomó el
+ pixel en la posición (1, 1).
+ En la segunda, se tomó el pixel en la posición (0,0).
+ En la tercera y última, se realizó un promedio entre los 16 pixeles.
+\end_layout
+
+\begin_layout Standard
+En la primer decimación, se puede notar una imagen más 
+\begin_inset Quotes eld
+\end_inset
+
+pixelada
+\begin_inset Quotes erd
+\end_inset
+
+ lo cual tiene sentido ya que se descartan detalles al decimar.
+\end_layout
+
+\begin_layout Standard
+En la segunda decimación, se puede notar una imagen que no tiene relación
+ con la imagen original, aunque enrealidad si se observa con detenimiento
+ la imagen original, esta última presenta un punteado equiespaciado, el
+ cual efectivamente se corresponde con la imagen que se obtuvo al decimar.
+\end_layout
+
+\begin_layout Standard
+En la tercer decimación, se logra eliminar el punteado y suavizar algunos
+ detalles de la imagen original debido a la promediación realizada.
+\end_layout
+
+\begin_layout Subsection
+Interpolación
+\end_layout
+
+\begin_layout Standard
+Luego de haber realizado las decimaciones, se toman cada una de las imagenes
+ y se le aplica una interpolación, tanto bilineal como cúbica.
+ Los resultados son los siguientes (para cada resultado de muestra también
+ el espectro de la imagen obtenida):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagenes5-2/resizedAbilineal.PNG
+	scale 40
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename imagenes5-2/resizedAbilinealSPEC.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interpolación A - bilineal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagenes5-2/resizedBbilineal.PNG
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename imagenes5-2/resizedBbilinealSPEC.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interpolación B - bilineal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagenes5-2/resizedCbilineal.PNG
+	scale 30
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename imagenes5-2/resizedCbilinealSPEC.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interpolación C - bilineal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagenes5-2/resizedAcubic.PNG
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename imagenes5-2/resizedAcubicSPEC.PNG
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interpolación A - bicúbica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagenes5-2/resizedBcubic.PNG
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename imagenes5-2/resizedBcubicSPEC.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interpolación B - bicúbica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagenes5-2/resizedCcubic.PNG
+	scale 30
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename imagenes5-2/resizedCcubicSPEC.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interpolación C - bicúbica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se puede concluir que se regeneran las imagenes correctamente, en el sentido
+ que se sigue identificando tanto el mono como la persona (Dani) luego de
+ interpolar.
+ En cuanto al tipo de interpolación utilizado, se puede notar que con la
+ interpolación bicubica se obtienen rasgos mas 
+\begin_inset Quotes eld
+\end_inset
+
+suaves
+\begin_inset Quotes erd
+\end_inset
+
+, que se notan tanto en la imágen como en las cambios de la respuesta en
+ frecuencia, la cual toma valores de pasabajos.
+\end_layout
+
+\end_body
+\end_document

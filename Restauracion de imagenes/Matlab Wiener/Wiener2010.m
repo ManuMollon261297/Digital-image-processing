@@ -1,4 +1,4 @@
-%Restauracion de imagenes - Ejemplo 
+%Restauracion de imagenes - Ejemplo
 
 
 % Blurred + Noised for testing refocusing algorithm.
@@ -9,19 +9,19 @@ clear all;
 %degradation parameters
 
 
-SNR_dB=10;                 %Signal to noise ratio 
+SNR_dB=10;                 %Signal to noise ratio
 
 
 
 %######################## Leo Imagen ####################################
 
-%my_image = imread('barraxx.bmp');            %% Leo imagen 
-%my_image = imread('barracuda_ok500.bmp');            %% Leo imagen 
-%my_image = imread('d2.bmp');                           %% Leo imagen 
+%my_image = imread('barraxx.bmp');            %% Leo imagen
+%my_image = imread('barracuda_ok500.bmp');            %% Leo imagen
+%my_image = imread('d2.bmp');                           %% Leo imagen
 load lenna;
 my_image = double(lenna)/256;
 
- 
+
 
 %############## Elimino color ##########################################
 
@@ -39,8 +39,8 @@ for x = 1:(de_pix*2+1)
 	for y = 1:(de_pix*2+1)
 		if ((x-de_pix-1)^2+(y-de_pix-1)^2 <= de_pix*2);
 			kernnel(x,y) = 1;
-		else 
-			kernnel(x,y) = 0;		
+		else
+			kernnel(x,y) = 0;
 		end
 	end
 end
@@ -48,7 +48,7 @@ end
 % Creamos una imagen del mismo tamanio de la imagen original para poder operar con la FFT.
 
 imsize = size(bw_my_image);                  %Determino el  tamanio de la imagen original
-rect_kernnel = zeros(imsize);                %La pongo en cero y le copio el Kernel . Esto es la PSF 
+rect_kernnel = zeros(imsize);                %La pongo en cero y le copio el Kernel . Esto es la PSF
 rect_kernnel(round(imsize(1)/2)-de_pix:round(imsize(1)/2)+de_pix,round(imsize(2)/2)-de_pix:round(imsize(2)/2)+de_pix) = kernnel;
 
 %################################## Low pass Filters #######################
@@ -60,19 +60,19 @@ lpass=    [0  0  0;
 lpass=1/9*[1  1  1;
            1  1  1;
            1  1  1];
-       
+
 lpass=1/5*[1/2  1/2  1/2;
            1/2  1    1/2;
            1/2  1/2  1/2];
-       
+
 lpass=1/16*[1  1  1;
             1  8  1;
             1  1  1];
-       
+
 lpass=1/12*[1  1  1;
             1  4  1;
             1  1  1];
-       
+
 
 h_Low_Pass=zeros(imsize);
 h_Low_Pass(ceil(imsize(1)/2)-1:ceil(imsize(1)/2)+1,ceil(imsize(2)/2)-1:ceil(imsize(2)/2)+1)=lpass;
@@ -103,11 +103,11 @@ blurred_my_image = abs(ifft2c(fft2c(bw_my_image).*fft2c(blur_kernnel)));
 
 sigma_burrled_image=std2(blurred_my_image);             % Encuentro la desviacion std de mi imagen
 sigma_noise=sqrt((sigma_burrled_image)^2*10^(-SNR_dB/10));  % y junto con la SNR saco la desviacion std del ruido
-noise=my_random(0,sigma_noise,imsize(1),imsize(2));               % para luego generar el ruido  
+noise=my_random(0,sigma_noise,imsize(1),imsize(2));               % para luego generar el ruido
 degraded_my_image = blurred_my_image + noise;      % Senial mas ruido !!!
 
 %%%%%%%%%%%%%%%%%%%%%%%% Imagen Original %%%%%%%%%%%%%%%%%%%
-figure(1) 
+figure(1)
 subplot(2,2,1)
 imshow(bw_my_image,[]);
 xlabel('Fig.2 a) Original image')
@@ -115,7 +115,7 @@ xlabel('Fig.2 a) Original image')
 %%%%%%%%%%%%%%%%%%%%%%%% Imagen distorsionada mas ruido %%%%%%%%%%%%%%%%%%%
 
 subplot(2,2,2)
-imshow(degraded_my_image,[]);  
+imshow(degraded_my_image,[]);
 xlabel('Fig.2 b) Blurred and noised image')
 
 %%%%%%%%%%%%%%%%%%%%%R E S T O R A T I O N (Wiener) %%%%%%%%%%%%%%%%%%%%%
@@ -126,7 +126,7 @@ fft_kernnel = fft2c(blur_kernnel);
 fft_degraded_my_image = fft2c(degraded_my_image);
 
 
-%To implement the Wiener filter in practice we have to estimate the power spectra 
+%To implement the Wiener filter in practice we have to estimate the power spectra
 %of the original image and the additive noise.
 
 %Power Spectra Density

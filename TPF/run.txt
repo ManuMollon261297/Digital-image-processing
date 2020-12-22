@@ -1,0 +1,3 @@
+conda activate dip
+cd 'C:\Users\Manuel Mollon\Dropbox\Q2-IMAG\Digital-image-processing\TPF'
+start python main.py
